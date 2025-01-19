@@ -1,8 +1,13 @@
 package models
 
-type User struct{
-	ID uint `gorm:"primaryKey"`
-	Email string
-	Username string
-	Password string
+type Review struct {
+	Username string `bson:"username"`
+	Content  string `bson:"review_content"`
+}
+
+type Portfolio struct {
+	ID      uint     `bson:"id"`
+	Title   string   `bson:"title"`
+	Content string   `bson:"content"`
+	Reviews []Review `bson:"reviews"`
 }

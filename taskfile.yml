@@ -1,0 +1,15 @@
+version : '3'
+
+tasks:
+    get-deps:
+        cmds:
+            - go get -u github.com/rs/zerolog
+            - go get -u github.com/golang-jwt/jwt/v5
+            - go get -u go.mongodb.org/mongo-driver/mongo/options
+    build:
+        cmds:
+            - go build -o ./bin/app cmd/main.go
+    run:
+        cmds:
+            - task build
+            - ./bin/app
