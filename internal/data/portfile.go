@@ -18,18 +18,18 @@ func (storage *PortfolioStorage) Add(portfolio models.Portfolio) error {
 	return err
 }
 
-func (storage *PortfolioStorage) Get(title string) ([]models.Portfolio, error) {
+func (storage *PortfolioStorage) Get(title string) (models.Portfolio, error) {
 	filter, err := storage.Collection.Find(storage.ctx, bson.M{
 		"title" : title,
 	})
 	if err != nil{
-		return nil, err
+		return models.Portfolio{}, err
 	}
 
-	var portfolias []models.Portfolio
+	var portfolias models.Portfolio
 
 	if err := filter.All(storage.ctx, &portfolias);err != nil{
-		return nil, err
+		return models.Portfolio{}, err
 	}
 
 	return portfolias, nil
