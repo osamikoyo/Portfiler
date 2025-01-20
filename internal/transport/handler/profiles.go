@@ -49,7 +49,7 @@ func (h Handler) getPortfolioHandler(w http.ResponseWriter, r *http.Request) err
 	return err
 }
 
-func (h Handler) addReviewHandler(w http.ResponseWriter, r *http.Request) error {
+func (h Handler) addReviewHandler(_ http.ResponseWriter, r *http.Request) error {
 	if r.Method != http.MethodPost {
 		return errors.New("method must be get")
 	}
