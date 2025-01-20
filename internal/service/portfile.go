@@ -9,6 +9,11 @@ type PortfileService struct{
 	Data *data.PortfolioStorage
 }
 
+func New() (PortfileService, error){
+	data, err := data.New()
+	return PortfileService{Data: data}, err
+}
+
 func (service *PortfileService) Add(portfile models.Portfolio) error {
 	return service.Data.Add(portfile)
 }
